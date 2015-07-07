@@ -28,6 +28,5 @@
         "semantic-ui-css": "~1.10.2",
         "semantic-ui-icon": "~1.10.2",
         "shelljs": "^0.3.0"
-
     }
 }
