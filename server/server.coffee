@@ -1,9 +1,19 @@
 http = require "http"
 url = require "url"
+port = 8000
 
-start = (route)->
-    (request, response)->
+route = (handle, pathname, response)->
+    if typeof handle[pathname] == 'function'
+        handle[pathname] response
+    else
+        console.log "No request handler fount for " + pathname
+
+start = (route，, handle)->
+    onRequest = (request, response)->
         pathname = url.parse(request.url).pathname
+        route handle, pathname, response
+    server = http.createServer onRequest
+    server.listin port
+    console.log "Server has started at " + port
 
-server = http.createServer()
-server.listin 8000
+start()
