@@ -1,6 +1,6 @@
-var requestHandlers = require "./requestHandlers"
+requestHandlers = require "./requestHandlers"
 
-var handle = {}
+handle = {}
 handle["/"] = requestHandlers.start
 
 exports.handle = handle
