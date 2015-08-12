@@ -1,19 +1,15 @@
 http = require "http"
 url = require "url"
+bodyParser = require "body-parser"
+express = require "express"
 port = 8000
 
-route = (handle, pathname, response)->
-    if typeof handle[pathname] == 'function'
-        handle[pathname] response
-    else
-        console.log "No request handler fount for " + pathname
+app = express()
 
-start = (route，, handle)->
-    onRequest = (request, response)->
-        pathname = url.parse(request.url).pathname
-        route handle, pathname, response
-    server = http.createServer onRequest
-    server.listin port
-    console.log "Server has started at " + port
+app.use bodyParser()
+app.all "/", (req, res)->
+    res.send "Hello word"#req.body.title + req.body.text
 
-start()
+app.listen port
+
+console.log "express server start at localhost:8000"
