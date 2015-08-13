@@ -7,9 +7,11 @@ port = 8080
 app = express()
 
 app.use bodyParser()
+
+# why config like this. what's usage of the 'use'
+app.use "/app", express.static __dirname + "/app"
 app.get "/", (req, res)->
-    res.send "hello word"
-    console.log "request:" + req + " response:" + res
+    res.redirect "/app"
 
 server = app.listen port, ()->
     console.log "Express server listen on %s:%s", server.address().address, server.address().port

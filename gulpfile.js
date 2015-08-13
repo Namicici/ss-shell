@@ -12,6 +12,9 @@ gulp.task("clean:out", function(cb){
 });
 
 gulp.task("compile:coffee", function(){
+    gulp.src("./*.coffee")
+        .pipe(coffee({bare: true}))
+        .pipe(gulp.dest("./out"))
     gulp.src("./server/*.coffee")
         .pipe(coffee({bare: true}))
         .pipe(gulp.dest("./out/server"))
