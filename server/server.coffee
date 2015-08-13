@@ -2,14 +2,13 @@ http = require "http"
 url = require "url"
 bodyParser = require "body-parser"
 express = require "express"
-port = 8000
+port = 8080
 
 app = express()
 
 app.use bodyParser()
-app.all "/", (req, res)->
-    res.send "Hello word"#req.body.title + req.body.text
+app.get "/", (req, res)->
+    res.send "Hello word"
 
-app.listen port
-
-console.log "express server start at localhost:8000"
+server = app.listen port, ()->
+    console.log "Express server listen on %s:%s", server.address().address, server.address().port

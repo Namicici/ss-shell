@@ -40,6 +40,9 @@
   },
   "scripts": {
         "prestart": "gulp build",
-        "start": "node out/server/server.js"
+        "start": "node out/server/server.js",
+        "build": "gulp build",
+        "prepublish": "gulp build",
+        "publish": "gulp minify:js"
   }
 }

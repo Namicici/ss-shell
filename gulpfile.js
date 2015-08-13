@@ -11,19 +11,13 @@ gulp.task("clean:out", function(cb){
     del("./out", cb);
 });
 
-gulp.task("clean:publish", function(cb){
-    del("./publish", cb);
-});
-
 gulp.task("compile:coffee", function(){
     gulp.src("./server/*.coffee")
         .pipe(coffee({bare: true}))
         .pipe(gulp.dest("./out/server"))
-    gulp.src("./app/view/**/*.coffee")
+    gulp.src("./app/**/*.coffee")
         .pipe(coffee({bare: true}))
-        .pipe(gulp.dest("./out/app/view"))
-    gulp.src("./app/*.coffee")
-        .pipe(coffee({bare: true}))
+        .pipe(concat("app.min.js"))
         .pipe(gulp.dest("./out/app"))
 });
 
@@ -32,34 +26,32 @@ gulp.task("copy:thirdParty", function(){
         .pipe(gulp.dest("./app/lib"))
     gulp.src("./app/lib/*.js")
         .pipe(concat("thirdParty.js"))
-        .pipe(gulp.dest("./out/app/lib"))
-        .pipe(gulp.dest("./publish/app/lib"))
+        .pipe(gulp.dest("./out/app"))
 });
 
 gulp.task("copy:view", function(){
     gulp.src("./app/view/**/*.html")
         .pipe(gulp.dest("./out/app/view"))
-        .pipe(gulp.dest("./publish/app/view"))
     gulp.src("./app/*.html")
         .pipe(gulp.dest("./out/app"))
-        .pipe(gulp.dest("./publish/app"))
 });
 
 gulp.task("sass", function(){
-    gulp.src("./app/sass/**/*.scss")
+    gulp.src("./app/sass/app.scss")
         .pipe(sass({errLogToConsole: true}))
-        .pipe(concat("app.css"))
         .pipe(rename({suffix: ".min"}))
         .pipe(minifycss())
         .pipe(gulp.dest("./out/app/css"))
-        .pipe(gulp.dest("./publish/app/css"))
 });
 
 gulp.task("minify:js", function(){
-    gulp.src(["./out/app/*.js", "./out/app/**/*.js"])
-        .pipe(concat("app.min.js"))
+    gulp.src("./out/app/*.js")
         .pipe(uglify())
-        .pipe(gulp.dest("./publish/app"))
+        .pipe(gulp.dest("./out/app"))
+    gulp.src("./app/lib/*.js")
+        .pipe(concat("thirdParty.js"))
+        .pipe(uglify())
+        .pipe(gulp.dest("./out/app"))
 });
 
 gulp.task("copy", function(){
@@ -72,8 +64,4 @@ gulp.task("compile", function(){
 
 gulp.task("build", ["clean:out"], function(){
     gulp.start("sass", "compile", "copy")
-});
-
-gulp.task("publish", ["clean:publish"], function(){
-    gulp.start("build", "minify:js")
 });
