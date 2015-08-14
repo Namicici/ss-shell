@@ -25,16 +25,16 @@ gulp.task("compile:coffee", function(){
 });
 
 gulp.task("copy:thirdParty", function(){
-    gulp.src(["./bower_components/angular/angular.min.js", "./bower_components/angular-route/angular-route.min.js"])
+    gulp.src(["./node_modules/angular/angular.min.js", "./node_modules/angular-route/angular-route.min.js"])
         .pipe(gulp.dest("./app/lib"))
-    gulp.src("./app/lib/*.js")
+    gulp.src(["./app/lib/angular.min.js", "./app/lib/angular-route.min.js"])
         .pipe(concat("thirdParty.js"))
         .pipe(gulp.dest("./out/app"))
 });
 
 gulp.task("copy:view", function(){
-    gulp.src("./app/view/**/*.html")
-        .pipe(gulp.dest("./out/app/view"))
+    gulp.src("./app/views/**/*.html")
+        .pipe(gulp.dest("./out/app/views"))
     gulp.src("./app/*.html")
         .pipe(gulp.dest("./out/app"))
 });
