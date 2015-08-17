@@ -14,6 +14,5 @@ angular.module "farmss.views"
             console.log msg
 
     getMenus()
-
 ]
 

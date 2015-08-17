@@ -26,8 +26,6 @@ gulp.task("compile:coffee", function(){
 
 gulp.task("copy:thirdParty", function(){
     gulp.src(["./node_modules/angular/angular.min.js", "./node_modules/angular-route/angular-route.min.js"])
-        .pipe(gulp.dest("./app/lib"))
-    gulp.src(["./app/lib/angular.min.js", "./app/lib/angular-route.min.js"])
         .pipe(concat("thirdParty.js"))
         .pipe(gulp.dest("./out/app"))
 });
@@ -45,6 +43,10 @@ gulp.task("sass", function(){
         .pipe(rename({suffix: ".min"}))
         .pipe(minifycss())
         .pipe(gulp.dest("./out/app/css"))
+});
+
+gulp.task("watch", function(){
+    gulp.watch(["./app/sass/*.scss", "./app/sass/**/*.scss", "./app/*.coffee", "./app/**/*.coffee", "./app/*.html", "./app/**/*.html"], ["build"])
 });
 
 gulp.task("minify:js", function(){
