@@ -1,0 +1,24 @@
+{
+  "name": "ss-shell",
+  "version": "1.0.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.26",
+    "angular-route": "~1.2.26",
+    "angular-resource": "~1.2.26",
+    "angular-mocks": "~1.2.26",
+    "angular-local-storage": "~0.1.5",
+    "moment": "~2.9.0",
+    "jasmine": "2.2.1",
+    "Sortable": "~1.2.0",
+    "c3": "https://github.com/masayuki0812/c3.git#0.4.10",
+    "MutationObserver-shim": "~0.3.1",
+    "angular-cookies": "~1.2.26"
+  }
+}

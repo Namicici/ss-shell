@@ -1,0 +1,8 @@
+require "./tasks/coffee"
+require "./tasks/clean"
+require "./tasks/build"
+require "./tasks/compile"
+require "./tasks/publish"
+require "./tasks/sass"
+require "./tasks/usemin"
+require "./tasks/thirdParty"

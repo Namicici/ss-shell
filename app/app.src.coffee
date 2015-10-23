@@ -8,6 +8,6 @@ angular.module "farmss", [
     $routeProvider
     .when "/",
         name: "home"
-        templateUrl:"./views/home/home.html"
+        templateUrl:"app/views/home/home.html"
         controller:"farmss.views.home"
 ]
