@@ -5,4 +5,5 @@ node_modules/
 bower_components/
 output/
 js/
+css/
 npm-debug.log
