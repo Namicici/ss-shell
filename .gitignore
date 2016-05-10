@@ -3,7 +3,5 @@
 
 node_modules/
 bower_components/
-output/
-js/
-css/
+/dist
 npm-debug.log

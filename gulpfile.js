@@ -1,3 +1,1 @@
-require("coffee-script").register();
-
-require("./gulp");
+"use strict";
