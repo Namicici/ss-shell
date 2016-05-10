@@ -1,3 +1,5 @@
 # ss-shell
 
-webpack 
+webpack + angularJS
+
+asynchronous loading controller
