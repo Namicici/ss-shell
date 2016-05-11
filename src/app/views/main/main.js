@@ -12,6 +12,4 @@ function mainController($scope){
 require.ensure([], function(require){
 
     app.registerController('app.views.main', mainController);
-
-    //module.exports = app.controller("app.views.main", mainController);
 })

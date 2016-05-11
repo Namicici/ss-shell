@@ -15,4 +15,5 @@ function configure($routeProvider, $locationProvider, $controllerProvider, $comp
     app.registerFactory = $provide.factory;
     app.registerService = $provide.service;
 }
+
 module.exports = app;

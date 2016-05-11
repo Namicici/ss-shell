@@ -1,4 +1,4 @@
-# ss-shell
+# ss-shell-webpack-angularJS
 
 webpack + angularJS
 
