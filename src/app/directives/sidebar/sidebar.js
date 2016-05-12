@@ -1,9 +1,9 @@
 "use strict";
 
-var app = require("../../app.js");
-require("./sidebar.scss");
+//require.ensure([], function(require){
+    var app = require("../../app.js");
+    require("./sidebar.scss");
 
-require.ensure([], function(require){
     app.registerDirective("sidebar", [function(){
         return {
             restrict:"EA",
@@ -18,4 +18,4 @@ require.ensure([], function(require){
             }
         }
     }]);
-})
+//})

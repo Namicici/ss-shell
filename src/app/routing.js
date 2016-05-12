@@ -9,28 +9,34 @@ app.factory("authInterceptor", [function(){
 
 app.config(["$routeProvider","$httpProvider", function($routeProvider, $httpProvider){
         $httpProvider.interceptors.push("authInterceptor");
-
-        function controllerLoader($q, dependencies){
-            var deffer = $q.defer();
-            var controllers = [];
-            require.ensure([], function(require){
-                for (var i = 0; i < dependencies.length; i ++){
-                    var dep = dependencies[i];
-                    controllers.push(require(dep));
-                }
-                deffer.resolve(controllers);
+        /*
+        angular.forEach(routers, function(router){
+            $routeProvider.when(router.url, {
+                name:router.name,
+                template: require(router.templateUrl),
+                controller:router.controller,
+                resolve: loader(router.dependencies)
             })
-            return deffer.promise;
-        }
+        })*/
 
         $routeProvider
         .when("/",{
             name: "home",
             template: require("./views/home/home.html"),
             controller:"app.views.home",
-            resolve:{
+            resolve: //loader(["./views/home/home.js"])
+            {
                 loadController: function($q){
-                    return controllerLoader($q, ["./views/home/home.js"]);
+
+                    var deffer = $q.defer();
+                    require.ensure([], function(require){
+                        require("./views/home/home.js");
+                        deffer.resolve();
+                    })
+                    return deffer.promise;
+
+                    //var promise = controllerLoader($q, ["./views/home/home.js"]);
+                    //return promise;
                 }
             }
         })
@@ -38,9 +44,19 @@ app.config(["$routeProvider","$httpProvider", function($routeProvider, $httpProv
             name:"main",
             template: require("./views/main/main.html"),
             controller:"app.views.main",
-            resolve:{
+            resolve://loader(["./views/main/main.js"])
+            {
                 loadController: function($q){
-                    return controllerLoader($q, ["./views/main/main.js"]);
+
+                    var deffer = $q.defer();
+                    require.ensure([], function(require){
+                        require("./views/main/main.js");
+                        deffer.resolve();
+                    })
+                    return deffer.promise;
+
+                    //var promise = controllerLoader($q, ["./views/main/main.js"]);
+                    //return promise;
                 }
             }
         })
