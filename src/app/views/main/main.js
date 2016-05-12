@@ -1,15 +1,11 @@
 "use strict";
 
 var app = require("../../app.js");
-
-mainController.$inject = ["$scope"];
-
-function mainController($scope){
-    $scope.data = "main page";
-
-}
+require("../../directives/sidebar/sidebar.js");
 
 require.ensure([], function(require){
 
-    app.registerController('app.views.main', mainController);
+    app.registerController('app.views.main', ["$scope", function($scope){
+        $scope.data = "main page";
+    }]);
 })
