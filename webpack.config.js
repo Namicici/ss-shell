@@ -9,8 +9,6 @@ module.exports = {
     entry:{
         app:"./app/routing.js",
         vendor:["./libs/angular.min.js", "./libs/angular-route.min.js"]
-        //angular:"./libs/angular.min.js",
-        //angularRoute:"./libs/angular-route.min.js"
     },
     output:{
         publicPath: "http://localhost:8080/",
@@ -21,7 +19,7 @@ module.exports = {
         loaders:[
             //{test:/\.html/, loader:"raw"}
             {test: /\.html$/, loader: 'html'},
-            {test:/\.scss$/, loaders:["style", "css", "sass"]},
+            {test: /\.scss$/, loaders:["style", "css", "sass"]},
             {test: /\.(jpe?g|png|gif|svg)$/i, loaders: [
                 'file?hash=sha512&digest=hex&name=[hash].[ext]',
                 'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'

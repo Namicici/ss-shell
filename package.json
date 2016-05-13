@@ -28,10 +28,10 @@
     "webpack-dev-server": "^1.14.1"
   },
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --watch",
     "prestart": "npm run build",
-    "startDev": "webpack-dev-server",
-    "start": "node server.js",
+    "start": "webpack-dev-server",
+    "server": "node server.js",
     "logError": "webpack --display-error-details"
   }
 }
