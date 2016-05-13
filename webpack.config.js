@@ -8,7 +8,7 @@ module.exports = {
     context:__dirname + "/src",
     entry:{
         app:"./app/routing.js",
-        vendor:["./libs/angular.min.js", "./libs/angular-route.min.js"]
+        vendor:["libs/angular.min.js", "libs/angular-route.min.js"]
     },
     output:{
         publicPath: "http://localhost:8080/",
@@ -26,11 +26,11 @@ module.exports = {
             ]}
         ]
     },
-    sassLoader: {
-        includePaths: [path.resolve(__dirname, "./sass")]
-    },
     plugins:[new htmlWebpackPlugin({
         filename:"index.html",
         template:"index.html"
-    })]
+    })],
+    resolve:{
+        root: path.resolve(__dirname + "/src")
+    }
 };

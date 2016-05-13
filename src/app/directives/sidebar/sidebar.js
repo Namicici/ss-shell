@@ -1,7 +1,7 @@
 "use strict";
 
 //require.ensure([], function(require){
-    var app = require("../../app.js");
+    var app = require("app/app.js");
     require("./sidebar.scss");
 
     app.registerDirective("sidebar", [function(){

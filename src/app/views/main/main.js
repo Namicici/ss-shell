@@ -1,7 +1,7 @@
 "use strict";
 
 var app = require("../../app.js");
-require("../../directives/sidebar/sidebar.js");
+require("app/directives/sidebar/sidebar.js");
 
 require.ensure([], function(require){
 

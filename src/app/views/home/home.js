@@ -2,8 +2,9 @@
 
 var app = require("../../app.js");
 require("./home.scss");
-require("../../../images/th-4.jpg");
-require("../../services/home.js");
+require("images/th-4.jpg");
+//require("../../../images/th-4.jpg");
+require("app/services/home.js");
 
 require.ensure([], function(require){
 

@@ -1,6 +1,8 @@
 "use strict";
 
 var app = require("./app.js");
+//var routers = require("./routers.js").routers;
+//var loader = require("./routers.js").loader;
 
 app.factory("authInterceptor", [function(){
     var authInterceptor = {};
@@ -9,16 +11,28 @@ app.factory("authInterceptor", [function(){
 
 app.config(["$routeProvider","$httpProvider", function($routeProvider, $httpProvider){
         $httpProvider.interceptors.push("authInterceptor");
-        /*
-        angular.forEach(routers, function(router){
-            $routeProvider.when(router.url, {
+/*
+        angular.forEach(routers, function(router, path){
+            $routeProvider.when(path, {
                 name:router.name,
                 template: require(router.templateUrl),
                 controller:router.controller,
-                resolve: loader(router.dependencies)
+                resolve: //loader(router.dependencies)
+                {
+                    loadController: function($q){
+                        var deffer = $q.defer();
+                        require.ensure([], function(require){
+                            for (var i = 0; i < router.dependencies.length; i++){
+                                require(router.dependencies);
+                            }
+                            deffer.resolve();
+                        })
+                        return deffer.promise;
+                    }
+                }
             })
-        })*/
-
+        })
+        */
         $routeProvider
         .when("/",{
             name: "home",
@@ -34,9 +48,6 @@ app.config(["$routeProvider","$httpProvider", function($routeProvider, $httpProv
                         deffer.resolve();
                     })
                     return deffer.promise;
-
-                    //var promise = controllerLoader($q, ["./views/home/home.js"]);
-                    //return promise;
                 }
             }
         })
@@ -55,8 +66,6 @@ app.config(["$routeProvider","$httpProvider", function($routeProvider, $httpProv
                     })
                     return deffer.promise;
 
-                    //var promise = controllerLoader($q, ["./views/main/main.js"]);
-                    //return promise;
                 }
             }
         })
