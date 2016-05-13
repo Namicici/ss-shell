@@ -14,7 +14,6 @@ require.ensure([], function(require){
                 }
                 return baseService.httpRequest(config)
             }
-
         }
     }])
 })

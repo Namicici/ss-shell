@@ -10,11 +10,11 @@ app.factory("authInterceptor", [function(){
 app.config(["$routeProvider","$httpProvider", function($routeProvider, $httpProvider){
         $httpProvider.interceptors.push("authInterceptor");
 
-        function loader(dependencies){
+        function loader(requireDependencies){
             var load = {
                 loader: function($q){
                     var deffer = $q.defer();
-                    dependencies(deffer);
+                    requireDependencies(deffer);
                     return deffer.promise;
                 }
             };
