@@ -1,5 +1,7 @@
 "use strict";
 
+require("asset/css/bootstrap.min.css");
+//require("css/style.css");
 require("angular");
 
 var app = angular.module("app", ["ngRoute"]);

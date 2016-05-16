@@ -20,10 +20,9 @@ module.exports = {
             //{test:/\.html/, loader:"raw"}
             {test: /\.html$/, loader: 'html'},
             {test: /\.scss$/, loaders:["style", "css", "sass"]},
-            {test: /\.(jpe?g|png|gif|svg)$/i, loaders: [
-                'file?hash=sha512&digest=hex&name=[hash].[ext]',
-                'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
-            ]}
+			{test: /\.css$/, loaders: ['style-loader','css-loader']},
+			{test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file" },
+			{test: /\.(jpe?g|png|gif|svg|ttf|woff|woff2)(\?v=\d+\.\d+\.\d+)?$/, loader:"url" }
         ]
     },
     plugins:[new htmlWebpackPlugin({
