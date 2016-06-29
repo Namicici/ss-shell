@@ -11,7 +11,7 @@ module.exports = {
         vendor:["libs/angular.min.js", "libs/angular-route.min.js"]
     },
     output:{
-        publicPath: "http://localhost:8080/",
+        publicPath: "/",
         path: __dirname + "/dist",
         filename: "[name].[hash].js"
     },
@@ -22,7 +22,8 @@ module.exports = {
             {test: /\.scss$/, loaders:["style", "css", "sass"]},
 			{test: /\.css$/, loaders: ['style-loader','css-loader']},
 			{test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file" },
-			{test: /\.(jpe?g|png|gif|svg|ttf|woff|woff2)(\?v=\d+\.\d+\.\d+)?$/, loader:"url" }
+            //{test: /\.(jpe?g|png|gif|svg)$/, loader:'file'},
+			{test: /\.(jpe?g|png|gif|svg|ttf|woff|woff2)(\?v=\d+\.\d+\.\d+)?$/, loader:"url-loader" }
         ]
     },
     plugins:[new htmlWebpackPlugin({
